@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+
+    <link rel="stylesheet" href="css/signup.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="naver-title">NAVER</h2>
+
+      <p class="title">본인확인을 위한<br />휴대전화 인증이 필요합니다</p>
+
+      <!-- 약관 동의 -->
+      < class="terms-box" id="termsBox">
+      <div class="terms-header" onclick="toggleTerms()">
+        <span class="terms-check" id="termsCheck">
+          <img
+            src="assets/icons/가입-체크.png"
+            alt="체크표시"
+            id="termsCheckImg"
+          />약관 전체 동의
+        </span>
+        <img
+          src="assets/icons/가입-업.png"
+          alt="전체페이지 접기"
+          id="termsArrow"
+          class="arrow-icon"
+        />
+      </div>
+
+      <!-- 약관 상세(펼침) -->
+      <div class="terms-detail" id="termsDetail">
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />인증시 개인정보 이용 <span class="required">(필수)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />인증시 고유식별정보 처리
+            <span class="required">(필수)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />통신사 이용약관 <span class="required">(필수)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />통신사 이용약관 <span class="required">(필수)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />인증사 이용약관 <span class="required">(필수)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+        <div class="terms-item">
+          <span
+            ><img
+              src="assets/icons/가입-체크s.png"
+              alt="체크"
+              class="item-check"
+            />네이버파이낸셜 개인정보 수집
+            <span class="optional">(선택)</span></span
+          >
+          <span class="terms-link"
+            >전체 <img src="assets/icons/가입-오.png" alt="전체보기"
+          /></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

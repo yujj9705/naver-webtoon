@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버로 로그인</title>
+
+    <link rel="stylesheet" href="css/login-naver.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <button class="back-btn" onclick="location.href = 'login.html'">
+        <img src="assets/icons/로그인-back.png" alt="뒤로가기" />
+      </button>
+
+      <div class="top">
+        <h1 class="naver-title">NAVER</h1>
+        <p class="subtitle">등록된 다른 간편 로그인 계정으로 로그인</p>
+      </div>
+
+      <div class="account-list">
+        <div class="saved-id" id="saveAccount">
+          <span class="account-id">
+            <span class="id-text">LAIaldd</span>
+            <span class="check"
+              ><img src="assets/icons/check.png" alt="확인표시"
+            /></span>
+          </span>
+          <button class="more-btn" onclick="toggleMenu()">
+            <img
+              src="assets/icons/로그인더보기.png"
+              alt="로그인아이디 정보 더보기"
+            />
+          </button>
+
+          <!-- 드롭다운 메뉴 -->
+          <div class="dropdown" id="dropdown">
+            <button class="dropdown-item">로그아웃</button>
+            <button class="dropdown-item">이 기기에서 사용 안함</button>
+            <button class="dropdown-item">계정관리</button>
+          </div>
+        </div>
+
+        <div class="account-item add" onclick="location.href = 'login.html'">
+          <span class="id-text">다른 아이디로</span>
+          <span class="add-icon"
+            ><img src="assets/icons/다른아이디로그인.png" alt="플러스아이콘"
+          /></span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>이용약관 &nbsp; 개인정보처리 방침</p>
+        <p>© NAVER Corp. &nbsp; 고객센터</p>
+      </div>
+    </div>
+  </body>
+</html>
