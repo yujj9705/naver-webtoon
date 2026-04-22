@@ -3,7 +3,270 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>장르 선택페이지</title>
+    <title>네이버 웹툰 - 온보딩 페이지</title>
+
+    <link rel="stylesheet" href="css/onboarding.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="phone">
+      <!-- screens wrapper -->
+      <div class="screens" id="screens">
+        <!-- screen - 1: 취향 선택  -->
+        <div class="screen active" id="screenGenre">
+          <div style="display: flex; align-items: center; min-height: 44px">
+            <button class="back-btn" onclick="goBack()">
+              <img src="assets/icons/chevron-left.png" alt="돌아가기 아이콘" />
+            </button>
+          </div>
+
+          <div class="logo-wrap">
+            <div class="logo">
+              <img src="assets/icons/logo-sm.png" alt="네이버웹툰" />
+            </div>
+          </div>
+
+          <p class="screen-title">네이버가 추천해드릴게요</p>
+          <p class="screen-subtitle">오늘은 어떤 장르가 끌리세요?</p>
+          <p class="counter">
+            최대 3가지 (<span id="genre-count">0</span> / 3)
+          </p>
+
+          <div class="genre-grid">
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `로맨스`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-로맨스1.png"
+              data-img-active="assets/icons/온보딩-로맨스2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-로맨스1.png"
+                alt="로맨스 아이콘"
+              />
+              <span class="genre-name">로맨스</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `판타지`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons.온보딩-판타지1.png"
+              data-img-active="assets/icons.온보딩-판타지2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-판타지1.png"
+                alt="판타지 아이콘"
+              />
+              <span class="genre-name">판타지</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `드라마`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-드라마1.png"
+              data-img-active="assets/icons/온보딩-드라마2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-드라마1.png"
+                alt="드라마 아이콘"
+              />
+              <span class="genre-name">드라마</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `액션`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-액션1.png"
+              data-img-active="assets/icons/온보딩-액션2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-액션1.png"
+                alt="액션 아이콘"
+              />
+              <span class="genre-name">액션</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `공포`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-공포1.png"
+              data-img-active="assets/icons/온보딩-공포2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-공포1.png"
+                alt="공포 아이콘"
+              />
+              <span class="genre-name">공포</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `개그`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-개그1.png"
+              data-img-active="assets/icons/온보딩-개그2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-개그1.png"
+                alt="개그 아이콘"
+              />
+              <span class="genre-name">개그</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `미스터리`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-미스터리1.png"
+              data-img-active="assets/icons/온보딩-미스터리2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-미스터리1.png"
+                alt="미스터리 아이콘"
+              />
+              <span class="genre-name">미스터리</span>
+            </div>
+            <div
+              class="genre-card"
+              onclick="toggleGenre(this, `신작`)"
+              onmouseenter="hoverCard(this)"
+              onmouseleave="unhoverCard(this)"
+              data-img-default="assets/icons/온보딩-신규1.png"
+              data-img-active="assets/icons/온보딩-신규2.png"
+            >
+              <img
+                class="genre-icon"
+                src="assets/icons/온보딩-신규1.png"
+                alt="별모양 신작 아이콘"
+              />
+              <span class="genre-name">신작</span>
+            </div>
+          </div>
+
+          <button
+            class="btn-primary inactive"
+            id="genreBtn"
+            onclick="onGenreConfirm()"
+          >
+            선택완료
+          </button>
+          <button class="btn-ghost" onclick="skipGenre()">
+            취향 선택없이 이어보기
+          </button>
+        </div>
+
+        <!-- screen-2 집중도 선택 -->
+        <div class="screen" id="screenFocus">
+          <div style="display: flex; align-items: center; min-height: 44px">
+            <button class="back-btn" onclick="goBack()">
+              <img src="assets/icons/chevron-left.png" alt="돌아가기 아이콘" />
+            </button>
+          </div>
+
+          <div class="logo-wrap">
+            <div class="logo">
+              <img src="assets/icons/logo-sm.png" alt="네이버웹툰" />
+            </div>
+          </div>
+
+          <p class="screen-subtitle">오늘은 어떤 집중모드로 보실건가요?</p>
+          <p class="counter" style="margin-top: 6px">
+            최대 1가지 (<span id="genre-count">0</span> / 1)
+          </p>
+
+          <div class="focus-options">
+            <div class="focus-card" onclick="selectFocus(this)">
+              <span class="focus-pct">30%</span>
+              <span class="focus-label">가볍게 보는 중</span>
+            </div>
+            <div class="focus-card" onclick="selectFocus(this)">
+              <span class="focus-pct">50%</span>
+              <span class="focus-label">슬슬 빠지는 중</span>
+            </div>
+            <div class="focus-card" onclick="selectFocus(this)">
+              <span class="focus-pct">70%</span>
+              <span class="focus-label">눈 못 떼는 중</span>
+            </div>
+            <div class="focus-card" onclick="selectFocus(this)">
+              <span class="focus-pct">100%</span>
+              <span class="focus-label">현실 차단</span>
+            </div>
+          </div>
+
+          <button
+            class="btn-primary inactive"
+            id="focusBtn"
+            onclick="onFocusConfirm"
+          >
+            선택완료
+          </button>
+          <button class="btn-ghost" onclick="skipFocus()">건너뛰기</button>
+          <p class="note-text" id="focusNote"></p>
+        </div>
+
+        <!-- screen-3 선택완료 -->
+        <div class="screen" id="screenComplete">
+          <div style="min-height: 44px"></div>
+
+          <div class="logo-wrap">
+            <div class="logo">
+              <img src="assets/icons/logo-sm.png" alt="네이버웹툰 로고" />
+            </div>
+          </div>
+
+          <div class="complete-screen">
+            <div class="complete-icon"></div>
+
+            <div class="complete-title">준비 완료! 👍</div>
+            <div class="complete-sub">
+              취향에 맞는 웹툰을<br />추천해드릴게요
+            </div>
+          </div>
+
+          <button
+            class="btn-primary active"
+            style="margin-top: auto"
+            onclick="goHome()"
+          >
+            웹툰 보러 가기
+          </button>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div class="toast" id="toast"></div>
+
+      <!-- Modal: skip genre -->
+      <div class="modal-overlay" id="skip-modal">
+        <div class="modal-sheet">
+          <div class="modal-handle"></div>
+          <div class="modal-title">
+            정말 장르 추천 없이<br />바로 이어보기 하시겠습니까?
+          </div>
+          <div class="modal-sub">
+            취향을 선택하면 더 잘 맞는 웹툰을<br />추천해드릴 수 있어요
+          </div>
+          <button class="modal-btn-primary" onclick="closeSkipModal(true)">
+            취향 선택없이 이어보기
+          </button>
+          <button class="modal-btn-ghost" onclick="closeSkipModal(false)">
+            장르 선택하러 돌아가기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+  </body>
 </html>
