@@ -154,7 +154,12 @@
             <option value="KT">KT</option>
             <option value="SKT">SKT</option>
             <option value="LGU">LG U+</option>
+            <img
+              src="assets/icons/carrier-check-down.png"
+              alt="드롭다운 아이콘"
+            />
           </select>
+
           <div class="toggle-group">
             <button
               class="toggle-btn active"
@@ -210,12 +215,13 @@
               class="timer-icon"
             />04분 53초</span
           >
-          <div class="code hidden">
-            <p class="code-msg hidden" id="codeMsg">
-              인증번호를 발송하였습니다.<br />확인후 번호를 입력해 주세요.
-            </p>
-            <span class="time-extend" onclick="extendTime()">시간연장</span>
-          </div>
+        </div>
+
+        <div class="code hidden">
+          <p class="code-msg hidden" id="codeMsg">
+            인증번호를 발송하였습니다.<br />확인후 번호를 입력해 주세요.
+          </p>
+          <span class="time-extend" onclick="extendTime()">시간연장</span>
         </div>
       </div>
 

@@ -7,10 +7,11 @@
 }
 
 body {
-  background-color: var(--white);
   width: 100%;
   min-height: 100dvh;
   margin: 0 auto;
+  overflow-x: hidden;
+  background-color: var(--white);
   font-family:
     "Pretendard Variable",
     Pretendard,
@@ -27,19 +28,19 @@ body {
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     sans-serif;
-  overflow-x: hidden;
 }
 
 .container {
   width: 100%;
-  padding: 20px 16px 40px;
+  min-width: 320px;
   display: flex;
-  flex-direction: column;
   gap: 15px;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
 }
 
 .naver-title {
-  font-size: 20px;
   font-family:
     "Paperlogy",
     -apple-system,
@@ -52,25 +53,28 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  font-size: 20px;
   font-weight: 800;
   color: var(--secondary);
   letter-spacing: -0.05em;
 }
 
 .title {
+  margin-bottom: 5px;
   font-size: 22px;
   font-weight: 500;
+  line-height: 1.4;
   color: var(--black);
   text-align: center;
-  line-height: 1.4;
-  margin-bottom: 5px;
 }
 
 /* 약관 */
 .terms-box {
   border: 1px solid var(--gray-300);
-  border-radius: 20px;
   overflow: hidden;
+  background-color: var(--white);
+  transition: border-color 0.2s;
+  border-radius: 20px;
 }
 
 .terms-header {
@@ -78,16 +82,16 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  cursor: pointer;
   font-size: 18px;
   font-weight: 700;
   color: var(--black);
+  cursor: pointer;
 }
 
 .terms-check {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 
 .terms-check img {
@@ -105,11 +109,26 @@ body {
 }
 
 .terms-detail {
-  border-top: 1px solid var(--gray-300);
-  padding: 10px 20px 20px 20px;
+  max-height: 600px;
+  opacity: 1;
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
+  padding: 10px 20px 20px 20px;
+  border-top: 1px solid var(--gray-300);
+  overflow: hidden;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    padding 0.25s ease;
+}
+
+.terms-detail.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: none;
 }
 
 .terms-list {
@@ -128,25 +147,25 @@ body {
 }
 
 .required {
-  font-size: 12px;
-  color: var(--warning-300);
-  font-weight: 400;
-  letter-spacing: -0.02em;
   margin-left: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--warning-300);
+  letter-spacing: -0.02em;
 }
 .optional {
-  font-size: 12px;
-  color: var(--warning-300);
-  font-weight: 400;
-  letter-spacing: -0.02em;
   margin-left: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--warning-300);
+  letter-spacing: -0.02em;
 }
 .terms-link {
   display: flex;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: -0.02em;
   color: var(--gray-800);
+  letter-spacing: -0.02em;
 }
 .terms-link img {
   width: 20px;
@@ -158,22 +177,22 @@ body {
 .form-box {
   width: 100%;
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  border: 1px solid var(--gray-300);
-  border-radius: 20px;
-  overflow: hidden;
+  flex-direction: column;
   margin-bottom: 10px;
+  border: 1px solid var(--gray-300);
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .input-row {
   width: 100%;
+  height: 50px;
   display: flex;
+  gap: 15px;
   align-items: center;
   padding: 15px;
-  height: 50px;
   border-bottom: 0.5px solid var(--gray-100);
-  gap: 15px;
 }
 
 .input-row:last-child {
@@ -191,14 +210,53 @@ body {
   flex: 1;
   border: none;
   outline: none;
-  font-size: 16px;
-  color: var(--gray-500);
   background: transparent;
   font-family: inherit;
+  font-size: 16px;
+  color: var(--gray-500);
 }
 
 .input-row input::placeholder {
   color: var(--gray-500);
+}
+
+/* 통신사 선택 */
+.carrier-select {
+  min-width: 160px;
+  flex: 1;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+  font-size: 14px;
+  color: var(--gray-500);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.carrier-select option {
+  color: var(--gray-500);
+}
+.carrier-select img {
+  width: 18px;
+  height: 18px;
 }
 
 /* 토글 버튼 */
@@ -211,45 +269,47 @@ body {
 .toggle-btn {
   padding: 5px 10px;
   border: 1px solid var(--gray-300);
-  border-radius: 10px;
   background: none;
+  font-family: inherit;
   font-size: 14px;
   color: var(--gray-500);
-  cursor: pointer;
-  font-family: inherit;
   transition: all 0.15s;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .toggle-btn.active {
   border: 2px solid var(--primary);
-  color: var(--primary);
   font-weight: 800;
+  color: var(--primary);
 }
 
 /* 인증요청 버튼 */
 .verify-btn {
   flex-shrink: 0;
   padding: 15px 26px;
-  background-color: var(--gray-400);
   border: none;
-  border-radius: 10px;
+  background-color: var(--gray-400);
+  font-family: inherit;
   font-size: 16px;
   font-weight: 400;
-  cursor: pointer;
-  font-family: inherit;
   transition: background 0.2s;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .verify-btn.active {
   background: var(--primary);
-  color: var(--black);
   font-weight: 800;
+  color: var(--black);
 }
 
 /* 타이머 */
 .timer {
   display: flex;
+  align-items: center;
   gap: 8px;
+  flex-shrink: 0;
   font-family:
     "Paperlogy",
     -apple-system,
@@ -264,22 +324,48 @@ body {
     sans-serif;
   font-size: 14px;
   color: var(--secondary);
-  flex-shrink: 0;
   white-space: nowrap;
 }
 .timer-icon {
   width: 18px;
   height: 18px;
+  object-fit: contain;
+}
+
+.code {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.code-msg {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--gray-500);
 }
 
 .time-extend {
-  font-size: 12px;
-  color: var(--gray-500);
-  font-weight: 600;
-  text-decoration: underline;
-  cursor: pointer;
   flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-decoration: underline;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+/* hidden 유틸 */
+.hidden {
+  display: none !important;
+}
+
+/* code 블록 표시 */
+.code.hidden {
+  display: none !important;
 }
 
 /* 다음 버튼 */
@@ -287,36 +373,37 @@ body {
   width: 100%;
   height: 50px;
   border: none;
-  border-radius: 20px;
+  background: var(--gray-400);
+  font-family: inherit;
   font-size: 16px;
   font-weight: 700;
-  cursor: pointer;
-  background: var(--gray-400);
   color: var(--white);
-  font-family: inherit;
   transition: background 0.2s;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .next-btn:not(:disabled) {
   background: var(--primary);
+  color: var(--black);
 }
 
 /* 안내 문구 */
 .notice {
-  font-size: 16px;
-  color: var(--white);
-  background: var(--secondary);
-  padding: 15px 39px;
-  border-radius: 20px;
-  text-align: center;
   width: 100%;
   height: 50px;
   align-items: center;
+  padding: 15px 39px;
+  background: var(--secondary);
+  font-size: 16px;
+  color: var(--white);
+  text-align: center;
+  border-radius: 20px;
 }
 
 .highlight {
-  color: var(--primary);
   font-weight: 700;
+  color: var(--primary);
 }
 
 .hidden {
