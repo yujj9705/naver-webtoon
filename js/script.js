@@ -1,7 +1,7 @@
-// // 온보딩 페이지 자동 넘어가기
-// setTimeout(() => {
-//   window.location.href = 'login.html';
-// }, 2000);
+// 온보딩 페이지 자동 넘어가기
+setTimeout(() => {
+  window.location.href = "login.html";
+}, 2000);
 
 // 로그인 more+btn 눌렀을때 드롭다운
 function toggleMenu() {
@@ -12,7 +12,7 @@ function toggleMenu() {
 // 다른 곳 클릭시 드롭다운 닫기
 document.addEventListener("click", (e) => {
   if (!e.target.closest("#saveAccount")) {
-    document.getElementById("dropdown").classList.remove("show");
+    document.getElementById("dropdown")?.classList.remove("show");
   }
 });
 
@@ -159,3 +159,159 @@ function goNext() {
 
 // 입력 변화 감지
 document.addEventListener("input", checkNextBtn);
+
+// ─── State ────────────────────────────────────────────────────────────────────
+const MAX_GENRES = 3;
+let selectedGenres = new Set();
+let selectedFocus = null;
+let currentScreen = "screenGenre"; // HTML id 기준: screenGenre | screenFocus | screenComplete
+
+// ─── Screen navigation ────────────────────────────────────────────────────────
+
+function showScreen(id) {
+  const current = document.querySelector(".screen.active");
+  const next = document.getElementById(id);
+  if (!current || !next || next === current) return;
+
+  // 현재 화면 → exit-left, absolute
+  current.classList.remove("active");
+  current.classList.add("exit-left");
+
+  // 다음 화면 → active, relative
+  next.style.position = "relative";
+  next.classList.add("active");
+
+  currentScreen = id;
+
+  // 애니메이션 끝난 후 exit 화면 정리
+  setTimeout(() => {
+    current.classList.remove("exit-left");
+    current.style.position = "absolute";
+  }, 400);
+}
+
+function goBack() {
+  if (currentScreen === "screenFocus") showScreen("screenGenre");
+  if (currentScreen === "screenComplete") showScreen("screenFocus");
+}
+
+// ─── Toast ────────────────────────────────────────────────────────────────────
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2500);
+}
+
+// ─── Genre: 이미지 교체 ──────────────────────────────────────────────────────
+
+function hoverCard(el) {
+  // 호버 시 이미지 교체 없음 — CSS scale만 동작
+}
+
+function unhoverCard(el) {
+  // 호버 해제 시 이미지 교체 없음
+}
+
+function setCardImage(el, state) {
+  // 클릭(선택/해제) 시에만 이미지 교체
+  const img = el.querySelector(".genre-icon");
+  if (!img) return;
+  img.src = state === "active" ? el.dataset.imgActive : el.dataset.imgDefault;
+}
+
+// ─── Genre: 선택 토글 ────────────────────────────────────────────────────────
+
+function toggleGenre(el, name) {
+  if (el.classList.contains("selected")) {
+    // 선택 해제
+    el.classList.remove("selected");
+    selectedGenres.delete(name);
+    setCardImage(el, "default");
+  } else {
+    // 최대 개수 초과
+    if (selectedGenres.size >= MAX_GENRES) {
+      showToast("최대 3가지까지만 선택할 수 있어요");
+      el.style.animation = "shake 0.3s ease";
+      setTimeout(() => (el.style.animation = ""), 300);
+      return;
+    }
+    // 선택
+    el.classList.add("selected");
+    selectedGenres.add(name);
+    setCardImage(el, "active");
+  }
+  updateGenreUI();
+}
+
+function updateGenreUI() {
+  const countEl = document.getElementById("genre-count");
+  const btn = document.getElementById("genreBtn");
+  const count = selectedGenres.size;
+
+  if (countEl) countEl.textContent = count;
+  btn.className = count > 0 ? "btn-primary active" : "btn-primary inactive";
+}
+
+function onGenreConfirm() {
+  if (selectedGenres.size === 0) return;
+  showScreen("screenFocus");
+}
+
+function skipGenre() {
+  document.getElementById("skip-modal").classList.add("show");
+}
+
+function closeSkipModal(skip) {
+  document.getElementById("skip-modal").classList.remove("show");
+  if (skip) showScreen("screenFocus");
+}
+
+// ─── Focus mode ───────────────────────────────────────────────────────────────
+
+function selectFocus(el) {
+  // 이전 선택 해제
+  document
+    .querySelectorAll(".focus-card")
+    .forEach((c) => c.classList.remove("selected"));
+
+  // 현재 카드 선택
+  el.classList.add("selected");
+  selectedFocus = el.querySelector(".focus-pct").textContent;
+
+  // 카운터, 버튼, 노트 업데이트
+  const focusCountEl = document
+    .getElementById("screenFocus")
+    .querySelector("#genre-count");
+  if (focusCountEl) focusCountEl.textContent = "1";
+
+  document.getElementById("focusBtn").className = "btn-primary active";
+  document.getElementById("focusNote").textContent =
+    "선택을 완료하여 빠른페이지로 남겨집니다.";
+}
+
+function onFocusConfirm() {
+  if (!selectedFocus) return;
+  showScreen("screenComplete");
+}
+
+function skipFocus() {
+  showScreen("screenComplete");
+}
+
+// ─── Complete ─────────────────────────────────────────────────────────────────
+
+function goHome() {
+  showToast("메인 화면으로 이동합니다");
+  setTimeout(() => {
+    // 실제 서비스에서는 window.location.href = '/main' 등으로 교체
+    alert("✅ 온보딩 완료! 메인 페이지로 이동합니다.");
+  }, 300);
+}
+
+// ─── Entry point (index.html에서 로그인 / 게스트 후 호출) ─────────────────────
+
+window.startOnboarding = function () {
+  showScreen("screenGenre");
+};
