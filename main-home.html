@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버웹툰 - Main-Homepage</title>
+
+    <link rel="stylesheet" href="css/main-home.css" />
+    <script src="js/main-home.js" defer></script>
+  </head>
+  <body>
+    <!-- 상단 헤더 -->
+    <header class="header">
+      <div class="header-top">
+        <div class="header-left">
+          <a href="main-home.html">
+            <img src="assets/icons/logo-xs.png" alt="네이버웹툰로고" />
+          </a>
+        </div>
+        <div class="header-right">
+          <button class="login-btn">로그인</button>
+        </div>
+      </div>
+
+      <div class="header-middle">
+        <!-- letf -->
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="recommend">추천웹툰</button>
+          <button
+            class="tab-btn"
+            data-tab="daily"
+            onclick="location.href = 'daily.html'"
+          >
+            요일웹툰
+          </button>
+        </nav>
+
+        <!-- right -->
+        <div class="md-right">
+          <button class="cookie-btn">
+            <a href="mypage.html">
+              <img src="assets/icons/cookie.png" alt="쿠키 아이콘" />
+            </a>
+          </button>
+
+          <button class="my-btn">MY</button>
+        </div>
+      </div>
+
+      <!-- 검색창 -->
+      <div class="search-bar">
+        <input type="text" placeholder="좋아하는 작품을 검색해보세요" />
+        <button class="search-icon">
+          <img src="assets/icons/search.png" alt="검색하기" />
+        </button>
+      </div>
+    </header>
+
+    <!-- main contents -->
+    <div class="main-content">
+      <!-- 맞춤형추천 -->
+      <section class="recommend-section">
+        <div class="section-header">
+          <h2 class="section-title">맞춤형 추천</h2>
+          <p class="section-subtitle">
+            골라주신 정보를 바탕으로 네이버가 추천해드려요
+          </p>
+        </div>
+
+        <div class="today-choice-box">
+          <div class="choice-setting">
+            <button onclick="openModal">
+              <img src="assets/icons/맞춤형 설정.png" alt="설정아이콘" />
+            </button>
+          </div>
+
+          <div class="tags-top">
+            <div class="tag-left">
+              <span class="today-genre">오늘의 장르</span>
+            </div>
+            <div class="tag-right" id="selectedGenres">
+              <span># 판타지</span>
+              <span># 코믹</span>
+              <span># 액션</span>
+            </div>
+          </div>
+          <div class="tags-bottom">
+            <div class="tag-left">
+              <span class="today-focus">오늘의 집중도</span>
+            </div>
+            <div class="tag" id="selectedFocus">
+              <span># 슬슬 빠지는 중</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recommend-list">
+          <div class="rec-card">
+            <img src="assets/img/rec-card 1.png" alt="전지적독자시점웹툰" />
+            <div class="webtoon-info">
+              <p class="webtoon-title">전지적<br />독자 시점</p>
+              <span>+ 1,402,937</span>
+              <span>총 302화</span>
+            </div>
+            <button class="view-btn">보러가기</button>
+            <div class="rec-counter">1/4</div>
+          </div>
+          <div class="rec-card">
+            <img src="assets/img/rec-card 2.png" alt="호랑이형님웹툰" />
+            <div class="webtoon-info">
+              <p class="webtoon-title">호랑이 형님</p>
+              <span>+ 916,749</span>
+              <span>총 120화</span>
+            </div>
+            <button class="view-btn">보러가기</button>
+            <div class="rec-counter">2/4</div>
+          </div>
+          <div class="rec-card">
+            <img src="assets/img/rec-card 3.png" alt="별을품은소드마스터웹툰" />
+            <div class="webtoon-info">
+              <p class="webtoon-title">별을 품은<br />소드마스터</p>
+              <span>+ 422,416</span>
+              <span>총 118화</span>
+            </div>
+            <button class="view-btn">보러가기</button>
+            <div class="rec-counter">3/4</div>
+          </div>
+          <div class="rec-card">
+            <img src="assets/img/rec-card 4.png" alt="샤머니즘웹툰" />
+            <div class="webtoon-info">
+              <p class="webtoon-title">샤<br />MONEY즘</p>
+              <span>+ 310,071</span>
+              <span>총 45화</span>
+            </div>
+            <button class="view-btn">보러가기</button>
+            <div class="rec-counter">4/4</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 최근 본 웹툰 -->
+      <section class="recent-section">
+        <div class="section-header-row">
+          <h3 class="section-label">최근 본 웹툰</h3>
+          <button class="more-link"></button>
+        </div>
+        <div class="recent-list">
+          <div class="recent-card1"></div>
+          <div class="recent-card2"></div>
+          <div class="recent-card3"></div>
+          <div class="recent-card4"></div>
+          <div class="recent-card5"></div>
+          <div class="recent-card6"></div>
+        </div>
+      </section>
+
+      <!-- 광고배너 -->
+      <div class="ad-banner">
+        <span class="ad-label">AD</span>
+        <img
+          src="assets/img/erik-mclean-tNO5weLNt-E-unsplash.jpg"
+          alt="광고이미지"
+        />
+      </div>
+
+      <!-- AI 랜덤 추천 -->
+      <section class="ai-section">
+        <div class="section-header-row">
+          <h3 class="section-label">AI 랜덤 추천</h3>
+          <button class="more-link"></button>
+        </div>
+        <div class="ai-fearured-card">
+          <div class="ai-card-bg"></div>
+        </div>
+        <div class="ai-thumb-row">
+          <div class="ai-thumb"></div>
+          <div class="ai-thumb"></div>
+          <div class="ai-thumb"></div>
+          <div class="ai-thumb"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 하단 메뉴바 -->
+    <div class="bottom-nav">
+      <button class="nav-item active">
+        <img class="nav-icon" src="assets/icons/홈2.png" alt="홈 아이콘" />
+        <span class="nav-label">홈</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/웹툰1.png" alt="책 아이콘" />
+        <span class="nav-label">웹툰</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/관심1.png" alt="관심 아이콘" />
+        <span class="nav-label">관심</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/마이1.png" alt="사람 아이콘" />
+        <span class="nav-label">MY</span>
+      </button>
+      <button class="nav-item">
+        <img
+          class="nav-icon"
+          src="assets/icons/알림1.png"
+          alt="종모양 아이콘"
+        />
+        <span class="nav-label">알림</span>
+      </button>
+    </div>
+
+    <!-- 모달페이지 -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <div class="section">
+          <h3>취향 변경</h3>
+          <div class="options" id="genreOptions">
+            <button onclick="toggleGenre(this)">로맨스</button>
+            <button onclick="toggleGenre(this)">판타지</button>
+            <button onclick="toggleGenre(this)">드라마</button>
+            <button onclick="toggleGenre(this)">액션</button>
+            <button onclick="toggleGenre(this)">공포</button>
+            <button onclick="toggleGenre(this)">개그</button>
+            <button onclick="toggleGenre(this)">미스터리</button>
+            <button onclick="toggleGenre(this)">신규</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>집중도 변경</h3>
+          <div class="options" id="focusOptions">
+            <button onclick="selectFocus(this)">가볍게 보는 중</button>
+            <button onclick="selectFocus(this)">슬슬 빠지는 중</button>
+            <button onclick="selectFocus(this)">눈 못 떼는 중</button>
+            <button onclick="selectFocus(this)">현실 차단</button>
+          </div>
+        </div>
+
+        <div class="modal-btns">
+          <button onclick="closeModal()">닫기</button>
+          <button onclick="applySelection()">적용하기</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

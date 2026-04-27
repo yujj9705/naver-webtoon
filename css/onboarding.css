@@ -272,7 +272,7 @@ body {
 }
 
 .btn-primary.active:hover {
-  background: var(--secondaey-200);
+  background: var(--secondary-200);
   transform: translateY(-1px);
 }
 
@@ -332,13 +332,13 @@ body {
 }
 
 .focus-card:hover {
-  border-color: var(--secondaey-600);
+  border-color: var(--secondary-600);
   box-shadow: 0 4px 16px rgba(0, 213, 100, 0.12);
   transform: translateY(-1px);
 }
 
 .focus-card.selected {
-  border-color: var(--secondaey-600);
+  border-color: var(--secondary-600);
   background: var(--primary);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(0, 213, 100, 0.3);
@@ -595,21 +595,21 @@ body {
 }
 
 /* logo +tagline */
-.intro-logo-wrap{
+.intro-logo-wrap {
   display: flex;
   flex-direction: column;
-  align-items: center ;
-  gap:  14px;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 64px;
 }
 
-.intro-logo-wrap .logo{
+.intro-logo-wrap .logo {
   width: 80px;
   height: 80px;
 }
 
 /* tagline */
-.intro-tagline{
+.intro-tagline {
   font-family:
     "Paperlogy",
     -apple-system,
@@ -622,10 +622,10 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--green-700);
-    letter-spacing: -0.02em;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--green-700);
+  letter-spacing: -0.02em;
 }
 
 /* button */
@@ -636,13 +636,13 @@ body {
   width: 100%;
 }
 
-.intro-btn{
+.intro-btn {
   width: 100%;
   padding: 22px 0;
   border-radius: 20px;
   border: 2px solid var(--gray-200);
   background: var(--white);
-    font-family:
+  font-family:
     "Paperlogy",
     -apple-system,
     BlinkMacSystemFont,
@@ -660,26 +660,26 @@ body {
   cursor: pointer;
   outline: none;
   transition:
-    background     0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color   0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    color          0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform      0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow     0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity        0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.intro-btn:hover{
+.intro-btn:hover {
   border-color: var(--secondary);
   color: var(--black);
   transform: translateY(-1px);
 }
 
-.intro-btn:active{
-  transform:  scale(0.97);
+.intro-btn:active {
+  transform: scale(0.97);
 }
 
 /* 취향 추천 선택됨 */
-.intro-btn.selected-green{
+.intro-btn.selected-green {
   background: var(--primary);
   border-color: none;
   color: var(--black);
@@ -688,7 +688,7 @@ body {
 }
 
 /* 바로가기 선택됨 */
-.intro-btn.selected-navy{
+.intro-btn.selected-navy {
   background: var(--secondary);
   border-color: none;
   color: var(--white);
