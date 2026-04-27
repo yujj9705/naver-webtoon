@@ -1,12 +1,8 @@
-// 온보딩 페이지 자동 넘어가기
-setTimeout(() => {
-  window.location.href = "login.html";
-}, 2000);
 
 // 로그인 more+btn 눌렀을때 드롭다운
 function toggleMenu() {
   const dropdown = document.getElementById("dropdown");
-  dropdown.classList.toggle("show");
+  if (dropdown) dropdown.classList.toggle("show");
 }
 
 // 다른 곳 클릭시 드롭다운 닫기
@@ -18,7 +14,7 @@ document.addEventListener("click", (e) => {
 
 // signup
 let timerInterval = null;
-let timeLeft = 293; // 4분 53초
+let timeLeft = 293; 
 let termsAgreed = false;
 let gender = `male`;
 let nation = "domestic";
@@ -130,13 +126,14 @@ function extendTime() {
 
 // 다음 버튼 활성화 조건 검사
 function checkNextBtn() {
-  const name = document.getElementById("nameInput").value;
-  const birth = document.getElementById("birthInput").value;
-  const phone = document.getElementById("phoneInput").value;
+  const name = document.getElementById("nameInput")?.value ?? "";
+  const birth = document.getElementById("birthInput")?.value ?? "";
+  const phone = document.getElementById("phoneInput")?.value ?? "";
   const codeRow = document.getElementById("codeRow");
   const codeInput = document.getElementById("codeInput");
   const code = codeInput ? codeInput.value : "";
   const btn = document.getElementById("nextBtn");
+  if (!btn) return;
 
   // 인증번호 행이 보일 때만 code 검사
   const codeVisible = !codeRow.classList.contains("hidden");
@@ -152,9 +149,11 @@ function checkNextBtn() {
   btn.disabled = !valid;
 }
 
-// 다음 버튼 클릭
+document.addEventListener("input", checkNextBtn);
+
+// 회원가입 완료 -> 온보딩으로 이동
 function goNext() {
-  window.location.href = "";
+  window.location.href = "onboarding.html";
 }
 
 // 입력 변화 감지
@@ -164,7 +163,7 @@ document.addEventListener("input", checkNextBtn);
 const MAX_GENRES = 3;
 let selectedGenres = new Set();
 let selectedFocus = null;
-let currentScreen = "screenGenre"; // HTML id 기준: screenGenre | screenFocus | screenComplete
+let currentScreen = "screenIntro"; 
 
 // ─── Screen navigation ────────────────────────────────────────────────────────
 
@@ -191,14 +190,41 @@ function showScreen(id) {
 }
 
 function goBack() {
+  if (currentScreen === "screenGenre") showScreen("screenIntro")
   if (currentScreen === "screenFocus") showScreen("screenGenre");
   if (currentScreen === "screenComplete") showScreen("screenFocus");
+}
+
+// screen -0  추천 여부 선택
+function selectIntroOption(choice) {
+  const btnRec = document.getElementById("btnRecommend");
+  const btnSkip = document.getElementById("btnSkipDirect");
+
+  if(choice === "recommend") {
+    // 취향 추천 
+     btnRec.classList.add("selected-green");
+    btnRec.classList.remove("dimmed");
+    btnSkip.classList.remove("selected-navy");
+    btnSkip.classList.add("dimmed");
+
+    setTimeout(() => showScreen("screenGenre"), 220);
+  
+  } else {
+    // 바로가기
+     btnSkip.classList.add("selected-navy");
+    btnSkip.classList.remove("dimmed");
+    btnRec.classList.remove("selected-green");
+    btnRec.classList.add("dimmed");
+ 
+    setTimeout(() => goHome(), 220);
+  }
 }
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
 function showToast(msg) {
   const toast = document.getElementById("toast");
+  if (!toast) return;
   toast.textContent = msg;
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 2500);
@@ -251,7 +277,7 @@ function updateGenreUI() {
   const count = selectedGenres.size;
 
   if (countEl) countEl.textContent = count;
-  btn.className = count > 0 ? "btn-primary active" : "btn-primary inactive";
+  if (btn) btn.className = count > 0 ? "btn-primary active" : "btn-primary inactive";
 }
 
 function onGenreConfirm() {
@@ -286,13 +312,21 @@ function selectFocus(el) {
     .querySelector("#genre-count");
   if (focusCountEl) focusCountEl.textContent = "1";
 
-  document.getElementById("focusBtn").className = "btn-primary active";
-  document.getElementById("focusNote").textContent =
-    "선택을 완료하여 빠른페이지로 남겨집니다.";
+
+  const focusBtn  = document.getElementById("focusBtn");
+  const focusNote = document.getElementById("focusNote");
+  if (focusBtn) {
+    focusBtn.className = "btn-primary active";
+    // disabled 속성도 제거해서 클릭 완전히 허용
+    focusBtn.removeAttribute("disabled");
+  }
+  if (focusNote) focusNote.textContent = "선택을 완료하여 빠른페이지로 남겨집니다.";
 }
 
 function onFocusConfirm() {
-  if (!selectedFocus) return;
+  // selectedFocus 없어도 선택된 카드가 있으면 통과
+  const hasSelected = document.querySelector(".focus-card.selected");
+  if (!selectedFocus && !hasSelected) return;
   showScreen("screenComplete");
 }
 
@@ -304,10 +338,7 @@ function skipFocus() {
 
 function goHome() {
   showToast("메인 화면으로 이동합니다");
-  setTimeout(() => {
-    // 실제 서비스에서는 window.location.href = '/main' 등으로 교체
-    alert("✅ 온보딩 완료! 메인 페이지로 이동합니다.");
-  }, 300);
+  window.location.href = "index.html";
 }
 
 // ─── Entry point (index.html에서 로그인 / 게스트 후 호출) ─────────────────────
