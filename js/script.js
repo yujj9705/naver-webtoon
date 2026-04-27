@@ -1,4 +1,3 @@
-
 // 로그인 more+btn 눌렀을때 드롭다운
 function toggleMenu() {
   const dropdown = document.getElementById("dropdown");
@@ -12,9 +11,48 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// saved-id 클릭 시 로그인 버튼 표시
+document.addEventListener("DOMContentLoaded", () => {
+  const savedId = document.getElementById("saveAccount");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // 더보기 버튼(.more-btn) 클릭은 제외하고 나머지 영역 클릭 시 활성화
+  savedId.addEventListener("click", (e) => {
+    if (e.target.closest(".more-btn")) return;
+    loginBtn.classList.add("visible");
+  });
+});
+
+// 로그인 첫 계정 자동선택 기능 추가
+document.addEventListener("DOMContentLoaded", () => {
+  const savedId = document.getElementById("saveAccount");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // 자동 선택
+  savedId.classList.add("active");
+  loginBtn.classList.add("visible");
+
+  // data-id에서 아이디 텍스트 가져와서 버튼에 반영
+  const idText = savedId.dataset.id;
+  updateLoginBtnText(idText);
+
+  // 클릭 시
+  savedId.addEventListener("click", (e) => {
+    if (e.target.closest(".more-btn")) return;
+    savedId.classList.add("active");
+    loginBtn.classList.add("visible");
+    updateLoginBtnText(savedId.dataset.id);
+  });
+});
+
+function updateLoginBtnText(id) {
+  const loginBtn = document.getElementById("loginBtn");
+  loginBtn.textContent = `${id}로 계속하기`;
+}
+
 // signup
 let timerInterval = null;
-let timeLeft = 293; 
+let timeLeft = 293;
 let termsAgreed = false;
 let gender = `male`;
 let nation = "domestic";
@@ -163,7 +201,7 @@ document.addEventListener("input", checkNextBtn);
 const MAX_GENRES = 3;
 let selectedGenres = new Set();
 let selectedFocus = null;
-let currentScreen = "screenIntro"; 
+let currentScreen = "screenIntro";
 
 // ─── Screen navigation ────────────────────────────────────────────────────────
 
@@ -190,7 +228,7 @@ function showScreen(id) {
 }
 
 function goBack() {
-  if (currentScreen === "screenGenre") showScreen("screenIntro")
+  if (currentScreen === "screenGenre") showScreen("screenIntro");
   if (currentScreen === "screenFocus") showScreen("screenGenre");
   if (currentScreen === "screenComplete") showScreen("screenFocus");
 }
@@ -200,22 +238,21 @@ function selectIntroOption(choice) {
   const btnRec = document.getElementById("btnRecommend");
   const btnSkip = document.getElementById("btnSkipDirect");
 
-  if(choice === "recommend") {
-    // 취향 추천 
-     btnRec.classList.add("selected-green");
+  if (choice === "recommend") {
+    // 취향 추천
+    btnRec.classList.add("selected-green");
     btnRec.classList.remove("dimmed");
     btnSkip.classList.remove("selected-navy");
     btnSkip.classList.add("dimmed");
 
     setTimeout(() => showScreen("screenGenre"), 220);
-  
   } else {
     // 바로가기
-     btnSkip.classList.add("selected-navy");
+    btnSkip.classList.add("selected-navy");
     btnSkip.classList.remove("dimmed");
     btnRec.classList.remove("selected-green");
     btnRec.classList.add("dimmed");
- 
+
     setTimeout(() => goHome(), 220);
   }
 }
@@ -277,7 +314,8 @@ function updateGenreUI() {
   const count = selectedGenres.size;
 
   if (countEl) countEl.textContent = count;
-  if (btn) btn.className = count > 0 ? "btn-primary active" : "btn-primary inactive";
+  if (btn)
+    btn.className = count > 0 ? "btn-primary active" : "btn-primary inactive";
 }
 
 function onGenreConfirm() {
@@ -312,15 +350,15 @@ function selectFocus(el) {
     .querySelector("#genre-count");
   if (focusCountEl) focusCountEl.textContent = "1";
 
-
-  const focusBtn  = document.getElementById("focusBtn");
+  const focusBtn = document.getElementById("focusBtn");
   const focusNote = document.getElementById("focusNote");
   if (focusBtn) {
     focusBtn.className = "btn-primary active";
     // disabled 속성도 제거해서 클릭 완전히 허용
     focusBtn.removeAttribute("disabled");
   }
-  if (focusNote) focusNote.textContent = "선택을 완료하여 빠른페이지로 남겨집니다.";
+  if (focusNote)
+    focusNote.textContent = "선택을 완료하여 빠른페이지로 남겨집니다.";
 }
 
 function onFocusConfirm() {
@@ -338,7 +376,7 @@ function skipFocus() {
 
 function goHome() {
   showToast("메인 화면으로 이동합니다");
-  window.location.href = "index.html";
+  window.location.href = "main-home.html"; // main-home.html 로 이동
 }
 
 // ─── Entry point (index.html에서 로그인 / 게스트 후 호출) ─────────────────────
