@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버웹툰 -요일웹툰</title>
+
+    <link rel="stylesheet" href="css/daily.css" />
+    <script src="js/daily.js" defer></script>
+  </head>
+  <body>
+    <!-- 상단 헤더 -->
+    <header class="header">
+      <div class="header-top">
+        <div class="header-left">
+          <a href="main-home.html">
+            <img src="assets/icons/logo-xs.png" alt="네이버웹툰로고" />
+          </a>
+        </div>
+        <div class="header-right">
+          <button
+            class="login-btn"
+            onclick="location.href = 'login-naver.html'"
+          >
+            로그인
+          </button>
+        </div>
+      </div>
+
+      <div class="header-middle">
+        <!-- letf -->
+        <nav class="tab-nav">
+          <button class="tab-btn" data-tab="recommend">추천웹툰</button>
+          <button
+            class="tab-btn active"
+            data-tab="daily"
+            onclick="location.href = 'daily.html'"
+          >
+            요일웹툰
+          </button>
+          <button
+            class="tab-btn"
+            data-tab="best"
+            onclick="location.href = 'best.html'"
+          >
+            베스트도전
+          </button>
+        </nav>
+
+        <!-- right -->
+        <div class="md-right">
+          <button class="cookie-btn">
+            <a href="mypage.html">
+              <img src="assets/icons/cookie.png" alt="쿠키 아이콘" />
+            </a>
+          </button>
+
+          <a href="mypage.html">
+            <button class="my-btn">MY</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- 검색창 -->
+      <div class="search-bar">
+        <input type="text" placeholder="좋아하는 작품을 검색해보세요" />
+        <button class="search-icon">
+          <img src="assets/icons/search.png" alt="검색하기" />
+        </button>
+      </div>
+    </header>
+
+    <!-- 메인콘텐츠 -->
+    <div class="main-content">
+      <!-- 실시간 랭킹 top 03 -->
+      <section class="ranking-section">
+        <h2 class="ranking-title">실시간 랭킹 TOP 03</h2>
+
+        <div class="ranking-list-slide">
+          <div class="rank-card">
+            <div class="rank-badge">
+              <p class="ranking">TOP 1</p>
+            </div>
+            <div class="rank-card-img-wrap">
+              <img src="assets/img/top1.png" alt="top1 웹툰" />
+            </div>
+
+            <div class="webtoon-info">
+              <p class="title">화산귀환</p>
+              <span>ARCHE/LICO/비가</span>
+              <span>총 165화</span>
+            </div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
+          </div>
+
+          <div class="rank-card">
+            <div class="rank-badge">
+              <p class="ranking">TOP 2</p>
+            </div>
+
+            <div class="rank-card-img-wrap">
+              <img src="assets/img/top2.png" alt="top2 웹툰" />
+            </div>
+
+            <div class="webtoon-info">
+              <p class="title">내가 키운 S급들</p>
+              <span>seri/비완/근서</span>
+              <span>총 165화</span>
+            </div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
+          </div>
+
+          <div class="rank-card">
+            <div class="rank-badge">
+              <p class="ranking">TOP 3</p>
+            </div>
+            <div class="rank-card-img-wrap">
+              <img src="assets/img/top3.png" alt="top3 웹툰" />
+            </div>
+
+            <div class="webtoon-info">
+              <p class="title">절대회귀</p>
+              <span>JP/박진환/장영훈</span>
+              <span>총 99화</span>
+            </div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ranking-dots">
+          <span class="rdot active"></span>
+          <span class="rdot"></span>
+          <span class="rdot"></span>
+        </div>
+      </section>
+
+      <!-- 광고배너 -->
+      <div class="ad-banner">
+        <span class="ad-label">AD</span>
+        <img
+          src="assets/img/erik-mclean-tNO5weLNt-E-unsplash.jpg"
+          alt="광고이미지"
+        />
+      </div>
+
+      <!-- 요일별 웹툰 -->
+      <section class="webtoon-grid-section">
+        <h2 class="daily-title">요일별 웹툰</h2>
+
+        <div class="day-tabs">
+          <button class="day-tab" data-day="mon">월요일</button>
+          <button class="day-tab active" data-day="tue">화요일</button>
+          <button class="day-tab" data-day="wed">수요일</button>
+          <button class="day-tab" data-day="thu">목요일</button>
+          <button class="day-tab" data-day="fri">금요일</button>
+          <button class="day-tab" data-day="sat">토요일</button>
+          <button class="day-tab" data-day="sun">일요일</button>
+        </div>
+
+        <div class="sort-tabs">
+          <button class="sort-tab active" data-sort="popular">인기순</button>
+          <button class="sort-tab" data-sort="update">업데이트순</button>
+          <button class="sort-tab" data-sort="view">조회순</button>
+        </div>
+
+        <div class="webtoon-grid" id="webtoonGrid">
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-1.png" alt="웹툰썸네일1" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-2.png" alt="웹툰썸네일2" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-3.png" alt="웹툰썸네일3" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-4.png" alt="웹툰썸네일4" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-5.png" alt="웹툰썸네일5" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-6.png" alt="웹툰썸네일6" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-7.png" alt="웹툰썸네일7" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-8.png" alt="웹툰썸네일8" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+          <div class="webtoon-card">
+            <div class="webtoon-thumbnail">
+              <img src="assets/img/d-9.png" alt="웹툰썸네일9" />
+            </div>
+            <div class="info">
+              <p class="webtoon-card-title">제목</p>
+              <span class="webtoon-card-sub">작가</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 하단 메뉴바 -->
+    <div class="bottom-nav">
+      <button class="nav-item active">
+        <img class="nav-icon" src="assets/icons/홈2.png" alt="홈 아이콘" />
+        <span class="nav-label">홈</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/웹툰1.png" alt="책 아이콘" />
+        <span class="nav-label">웹툰</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/관심1.png" alt="관심 아이콘" />
+        <span class="nav-label">관심</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/마이1.png" alt="사람 아이콘" />
+        <span class="nav-label">MY</span>
+      </button>
+      <button class="nav-item">
+        <img
+          class="nav-icon"
+          src="assets/icons/알림1.png"
+          alt="종모양 아이콘"
+        />
+        <span class="nav-label">알림</span>
+      </button>
+    </div>
+  </body>
+</html>
