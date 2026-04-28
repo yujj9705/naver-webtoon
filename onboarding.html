@@ -11,22 +11,33 @@
     <div class="phone">
       <!-- screens wrapper -->
       <div class="screens" id="screens">
-
         <!-- screen -0 추천 여부 선택 -->
-         <div class="screen active" id="screenIntro">
+        <div class="screen active" id="screenIntro">
           <div class="intro-logo-wrap">
             <div class="logo">
-              <img src="assets/icons/logo-m.png" alt="네이버웹툰 로고">
+              <img src="assets/icons/logo-m.png" alt="네이버웹툰 로고" />
             </div>
             <p class="intro-tagline">" 이야기에 빠지는 시간 "</p>
           </div>
 
           <div class="intro-options">
-            <button class="intro-btn" id="btnRecommend" onclick="selectIntroOption('recommend')">취향 추천 받을래요</button>
-            <button class="intro-btn" id="btnSkipDirect" onclick="selectIntroOption('skip')">추천없이 바로가기</button>
+            <button
+              class="intro-btn"
+              id="btnRecommend"
+              onclick="selectIntroOption('recommend')"
+            >
+              취향 추천 받을래요
+            </button>
+            <button
+              class="intro-btn"
+              id="btnSkipDirect"
+              onclick="selectIntroOption('skip')"
+            >
+              추천없이 바로가기
+            </button>
           </div>
-         </div>
-         
+        </div>
+
         <!-- screen - 1: 취향 선택  -->
         <div class="screen active" id="screenGenre">
           <div style="display: flex; align-items: center; min-height: 44px">
@@ -223,7 +234,7 @@
           <button
             class="btn-primary inactive"
             id="focusBtn"
-            onclick="onFocusConfirm"
+            onclick="onFocusConfirm()"
           >
             선택완료
           </button>
