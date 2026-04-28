@@ -353,8 +353,8 @@ function selectFocus(el) {
   const focusBtn = document.getElementById("focusBtn");
   const focusNote = document.getElementById("focusNote");
   if (focusBtn) {
-    focusBtn.className = "btn-primary active";
-    // disabled 속성도 제거해서 클릭 완전히 허용
+    focusBtn.classList.remove("inactive");
+    focusBtn.classList.add("active");
     focusBtn.removeAttribute("disabled");
   }
   if (focusNote)

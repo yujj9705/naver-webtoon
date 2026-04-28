@@ -18,7 +18,12 @@
           </a>
         </div>
         <div class="header-right">
-          <button class="login-btn">로그인</button>
+          <button
+            class="login-btn"
+            onclick="location.href = 'login-naver.html'"
+          >
+            로그인
+          </button>
         </div>
       </div>
 
@@ -33,6 +38,13 @@
           >
             요일웹툰
           </button>
+          <button
+            class="tab-btn"
+            data-tab="best"
+            onclick="location.href = 'best.html'"
+          >
+            베스트도전
+          </button>
         </nav>
 
         <!-- right -->
@@ -43,7 +55,9 @@
             </a>
           </button>
 
-          <button class="my-btn">MY</button>
+          <a href="mypage.html">
+            <button class="my-btn">MY</button>
+          </a>
         </div>
       </div>
 
@@ -80,7 +94,7 @@
             </div>
             <div class="tag-right" id="selectedGenres">
               <span># 판타지</span>
-              <span># 코믹</span>
+              <span># 개그</span>
               <span># 액션</span>
             </div>
           </div>
@@ -96,44 +110,63 @@
 
         <div class="recommend-list">
           <div class="rec-card">
-            <img src="assets/img/rec-card 1.png" alt="전지적독자시점웹툰" />
+            <div class="rec-card-img-wrap">
+              <img src="assets/img/rec-card 1.png" alt="전지적독자시점웹툰" />
+            </div>
             <div class="webtoon-info">
               <p class="webtoon-title">전지적<br />독자 시점</p>
               <span>+ 1,402,937</span>
               <span>총 302화</span>
             </div>
-            <button class="view-btn">보러가기</button>
             <div class="rec-counter">1/4</div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
           </div>
           <div class="rec-card">
-            <img src="assets/img/rec-card 2.png" alt="호랑이형님웹툰" />
+            <div class="rec-card-img-wrap">
+              <img src="assets/img/rec-card 2.png" alt="호랑이형님웹툰" />
+            </div>
             <div class="webtoon-info">
               <p class="webtoon-title">호랑이 형님</p>
               <span>+ 916,749</span>
               <span>총 120화</span>
             </div>
-            <button class="view-btn">보러가기</button>
             <div class="rec-counter">2/4</div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
           </div>
           <div class="rec-card">
-            <img src="assets/img/rec-card 3.png" alt="별을품은소드마스터웹툰" />
+            <div class="rec-card-img-wrap">
+              <img
+                src="assets/img/rec-card 3.png"
+                alt="별을품은소드마스터웹툰"
+              />
+            </div>
             <div class="webtoon-info">
               <p class="webtoon-title">별을 품은<br />소드마스터</p>
               <span>+ 422,416</span>
               <span>총 118화</span>
             </div>
-            <button class="view-btn">보러가기</button>
             <div class="rec-counter">3/4</div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
           </div>
           <div class="rec-card">
-            <img src="assets/img/rec-card 4.png" alt="샤머니즘웹툰" />
+            <div class="rec-card-img-wrap">
+              <img src="assets/img/rec-card 4.png" alt="샤머니즘웹툰" />
+            </div>
             <div class="webtoon-info">
               <p class="webtoon-title">샤<br />MONEY즘</p>
               <span>+ 310,071</span>
               <span>총 45화</span>
             </div>
-            <button class="view-btn">보러가기</button>
             <div class="rec-counter">4/4</div>
+            <div class="view-btn-wrap">
+              <button class="view-btn">보러가기</button>
+            </div>
           </div>
         </div>
       </section>
@@ -144,13 +177,33 @@
           <h3 class="section-label">최근 본 웹툰</h3>
           <button class="more-link"></button>
         </div>
-        <div class="recent-list">
-          <div class="recent-card1"></div>
-          <div class="recent-card2"></div>
-          <div class="recent-card3"></div>
-          <div class="recent-card4"></div>
-          <div class="recent-card5"></div>
-          <div class="recent-card6"></div>
+        <div class="recent-list-wrap">
+          <button class="slide-arrow prev">
+            <img src="assets/icons/최근웹툰 left.png" alt="왼쪽으로가기" />
+          </button>
+          <div class="recent-list">
+            <div class="recent-card1">
+              <img src="assets/img/recent-1.png" alt="웹툰 썸네일 1" />
+            </div>
+            <div class="recent-card2">
+              <img src="assets/img/recent-2.png" alt="웹툰 썸네일 2" />
+            </div>
+            <div class="recent-card3">
+              <img src="assets/img/recent-3.png" alt="웹툰 썸네일 3" />
+            </div>
+            <div class="recent-card4">
+              <img src="assets/img/recent-4.png" alt="웹툰 썸네일 4" />
+            </div>
+            <div class="recent-card5">
+              <img src="assets/img/recent-5.png" alt="웹툰 썸네일 5" />
+            </div>
+            <div class="recent-card6">
+              <img src="assets/img/recent-6.png" alt="웹툰 썸네일 6" />
+            </div>
+          </div>
+          <button class="slide-arrow next">
+            <img src="assets/icons/최근웹툰 right.png" alt="오른쪽으로 가기" />
+          </button>
         </div>
       </section>
 
@@ -170,13 +223,26 @@
           <button class="more-link"></button>
         </div>
         <div class="ai-fearured-card">
-          <div class="ai-card-bg"></div>
+          <div class="ai-card-bg">
+            <img
+              src="assets/img/new-랜덤추천1.png"
+              alt="웹툰 썸네일-신규추천"
+            />
+          </div>
         </div>
         <div class="ai-thumb-row">
-          <div class="ai-thumb"></div>
-          <div class="ai-thumb"></div>
-          <div class="ai-thumb"></div>
-          <div class="ai-thumb"></div>
+          <div class="ai-thumb">
+            <img src="assets/img/ai-1.png" alt="웹툰썸네일1" />
+          </div>
+          <div class="ai-thumb">
+            <img src="assets/img/ai-2.png" alt="웹툰썸네일2" />
+          </div>
+          <div class="ai-thumb">
+            <img src="assets/img/ai-3.png" alt="웹툰썸네일3" />
+          </div>
+          <div class="ai-thumb">
+            <img src="assets/img/ai-4.png" alt="웹툰썸네일4" />
+          </div>
         </div>
       </section>
     </div>
@@ -211,28 +277,34 @@
 
     <!-- 모달페이지 -->
     <div class="modal" id="modal">
+      <div class="modal-backdrop" onclick="closeModal()"></div>
       <div class="modal-content">
-        <div class="section">
-          <h3>취향 변경</h3>
-          <div class="options" id="genreOptions">
-            <button onclick="toggleGenre(this)">로맨스</button>
-            <button onclick="toggleGenre(this)">판타지</button>
-            <button onclick="toggleGenre(this)">드라마</button>
-            <button onclick="toggleGenre(this)">액션</button>
-            <button onclick="toggleGenre(this)">공포</button>
-            <button onclick="toggleGenre(this)">개그</button>
-            <button onclick="toggleGenre(this)">미스터리</button>
-            <button onclick="toggleGenre(this)">신규</button>
-          </div>
-        </div>
+        <div class="modal-handle"></div>
+        <p class="modal-title">맞춤 설정</p>
 
-        <div class="section">
-          <h3>집중도 변경</h3>
-          <div class="options" id="focusOptions">
-            <button onclick="selectFocus(this)">가볍게 보는 중</button>
-            <button onclick="selectFocus(this)">슬슬 빠지는 중</button>
-            <button onclick="selectFocus(this)">눈 못 떼는 중</button>
-            <button onclick="selectFocus(this)">현실 차단</button>
+        <div class="modal-columns">
+          <div class="modal-col">
+            <h3>취향 변경</h3>
+            <div id="genreOptions">
+              <button onclick="toggleGenre(this)">로맨스</button>
+              <button onclick="toggleGenre(this)">판타지</button>
+              <button onclick="toggleGenre(this)">드라마</button>
+              <button onclick="toggleGenre(this)">액션</button>
+              <button onclick="toggleGenre(this)">공포</button>
+              <button onclick="toggleGenre(this)">개그</button>
+              <button onclick="toggleGenre(this)">미스터리</button>
+              <button onclick="toggleGenre(this)">신규</button>
+            </div>
+          </div>
+
+          <div class="modal-col">
+            <h3>집중도 변경</h3>
+            <div id="focusOptions">
+              <button onclick="selectFocus(this)">가볍게 보는 중</button>
+              <button onclick="selectFocus(this)">슬슬 빠지는 중</button>
+              <button onclick="selectFocus(this)">눈 못 떼는 중</button>
+              <button onclick="selectFocus(this)">현실 차단</button>
+            </div>
           </div>
         </div>
 
