@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버웹툰-mypage</title>
+
+    <link rel="stylesheet" href="css/my-page.css" />
+    <script src="js/script.js" defer></script>
+    <script src="js/my-page.js" defer></script>
+  </head>
+  <body>
+    <!-- 상단헤더 -->
+    <header class="top-bar">
+      <a href="main-home.html" class="logo">
+        <img src="assets/icons/logo-xs.png" alt="네이버웹툰로고" />
+      </a>
+      <div class="top-icons">
+        <a href="#" class="bell">
+          <img src="assets/icons/my-bell.png" alt="종모양 아이콘" />
+        </a>
+        <a href="#" class="set">
+          <img src="assets/icons/my-settings.png" alt="설정아이콘" />
+        </a>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <div class="page-container">
+      <!-- profile -->
+      <section class="profile-section">
+        <div class="profile-avator-wrap">
+          <div class="profile-avator">
+            <img src="assets/img/profile-avator.png" alt="프로필" />
+          </div>
+          <div class="online-dot"></div>
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">분홍샌들마법사</h2>
+        </div>
+        <div class="profile-settings">
+          <button class="btn-infoset">내 정보 수정</button>
+          <button class="btn-allset">로그인 계정설정</button>
+        </div>
+      </section>
+
+      <!-- cookie section -->
+      <section class="cookie-section">
+        <div class="cookie-header">
+          <div class="cookie-balance">
+            <div class="cooike-icon">
+              <img src="assets/icons/cookie.png" alt="쿠키 아이콘" />
+            </div>
+            <div class="cookie-text">
+              <p class="cookie-label">MY 쿠키</p>
+              <p class="cookie-amount">45 <span>개</span></p>
+            </div>
+          </div>
+          <button class="cs-btn">
+            <img src="assets/icons/고객센터.png" alt="고객센터아이콘" />고객센터
+          </button>
+        </div>
+        <div class="cookie-divider"></div>
+        <div class="cookie-actions">
+          <button class="cookie-action-btn" data-tooltip="쿠키미션">
+            <div class="cookie-action-icon mission">
+              <img src="assets/icons/쿠키미션.png" alt="쿠키미션아이콘" />
+            </div>
+            <span>쿠키미션</span>
+          </button>
+          <button class="cookie-action-btn" data-tooltip="쿠키오픈">
+            <div class="cookie-action-icon oven">
+              <img src="assets/icons/쿠키오븐.png" alt="쿠키오븐아이콘" />
+            </div>
+            <span>쿠키오븐</span>
+          </button>
+          <button class="cookie-action-btn" data-tooltip="쿠키충전">
+            <div class="cookie-action-icon charge">
+              <img src="assets/icons/쿠키충전.png" alt="쿠키충전아이콘" />
+            </div>
+            <span>쿠키충전</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 관심장르 섹션 -->
+      <section class="genre-section">
+        <div class="genre-header">
+          <div class="genre-icon">
+            <img src="assets/icons/관심장르.png" alt="관심장르 하트" />
+          </div>
+          <h3>관심장르</h3>
+        </div>
+        <p class="genre-sub">
+          요즘 <strong>분홍샌들마법사</strong>님의 관심장르는
+        </p>
+        <div class="genre-display">
+          <img src="assets/icons/온보딩-판타지1.png" alt="판타지아이콘" />
+          <span class="genre-name">판타지</span>
+        </div>
+      </section>
+
+      <!-- 취향달력 섹션 -->
+      <section class="calendar-section">
+        <div class="calendar-header">
+          <div class="calendar-icon">
+            <img src="assets/icons/취향.png" alt="취향 하트 아이콘" />
+          </div>
+          <h3>취향달력</h3>
+
+          <button class="calendar" id="calendarViewBtn">
+            <img src="assets/icons/취향달력.png" alt="달력아이콘" />
+          </button>
+        </div>
+
+        <div class="calendar-nav">
+          <button class="cal-nav-btn" id="prevMonth">
+            <img src="assets/icons/취향달력 left.png" alt="왼쪽화살표" />
+          </button>
+          <span class="cal-month-label" id="calMonthLabel">April, 2026</span>
+          <button class="cal-nav-btn" id="nextMonth">
+            <img src="assets/icons/취향달력 right.png" alt="오른쪽화살표" />
+          </button>
+        </div>
+        <div class="calendar-grid">
+          <div class="cal-day-header">MON</div>
+          <div class="cal-day-header">TUE</div>
+          <div class="cal-day-header">WED</div>
+          <div class="cal-day-header">THU</div>
+          <div class="cal-day-header">FRI</div>
+          <div class="cal-day-header">SAT</div>
+          <div class="cal-day-header">SUN</div>
+          <!-- JS로 동적 생성 -->
+        </div>
+        <!-- 장르 아이콘 범례 -->
+        <div class="genre-legend">
+          <div class="legend-item">
+            <img src="assets/icons/로맨스.png" alt="로맨스 아이콘" />
+            <span>로맨스</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/판타지.png" alt="판타지 아이콘" />
+            <span>판타지</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/드라마.png" alt="드라마 아이콘" />
+            <span>드라마</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/액션.png" alt="액션 아이콘" />
+            <span>액션</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/공포.png" alt="공포 아이콘" />
+            <span>공포</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/개그.png" alt="개그 아이콘" />
+            <span>개그</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/미스터리.png" alt="미스터리 아이콘" />
+            <span>미스터리</span>
+          </div>
+          <div class="legend-item">
+            <img src="assets/icons/신규.png" alt="신규 아이콘" />
+            <span>신규</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 웹툰피드 섹션 -->
+      <section class="feed-section">
+        <div class="feed-header">
+          <div class="feed-icon">
+            <img src="assets/icons/feed-icon.png" alt="피드 아이콘" />
+          </div>
+          <h3>웹툰피드</h3>
+          <span class="feed-count-badge">3</span>
+        </div>
+        <div class="feed-list" id="feedList">
+          <div class="feed-item unread">
+            <div
+              class="feed-thumb"
+              style="background: linear-gradient(135deg, #667eea, #764ba2)"
+            >
+              판
+            </div>
+            <div class="feed-content">
+              <p class="feed-title">달빛조각사</p>
+              <p class="feed-desc">작가님이 새글을 업데이트 했어요!</p>
+              <span class="feed-time">방금 전</span>
+            </div>
+            <div class="feed-new-badge">NEW</div>
+          </div>
+
+          <div class="feed-item unread">
+            <div
+              class="feed-thumb"
+              style="background: linear-gradient(135deg, #f093fb, #f5576c)"
+            >
+              로
+            </div>
+            <div class="feed-content">
+              <p class="feed-title">사내맞선</p>
+              <p class="feed-desc">작품의 공지글이 올라왔어요!</p>
+              <span class="feed-time">23분 전</span>
+            </div>
+            <div class="feed-new-badge">공지</div>
+          </div>
+          <div class="feed-item">
+            <div
+              class="feed-thumb"
+              style="background: linear-gradient(135deg, #4facfe, #00f2fe)"
+            >
+              액
+            </div>
+            <div class="feed-content">
+              <p class="feed-title">싸움독학</p>
+              <p class="feed-desc">작품의 공지글이 올라왔어요!</p>
+              <span class="feed-time">1시간 전</span>
+            </div>
+            <div class="feed-new-badge">공지</div>
+          </div>
+        </div>
+        <button class="feed-more-btn">
+          피드 더 보기
+          <img src="assets/icons/carrier-check-down.png" alt="아래 더보기" />
+        </button>
+      </section>
+
+      <!-- 최근 본 작품 섹션 -->
+      <section class="recent-section">
+        <div class="section">
+          <div class="recent-title-row">
+            <div class="section-icon" style="font-size: 18px">▶</div>
+            <h3>최근 본 작품</h3>
+          </div>
+          <button class="recent-see-all">전체보기</button>
+        </div>
+        <div class="recent-scroll">
+          <div class="recent-item">
+            <div
+              class="recent-cover"
+              style="background: linear-gradient(135deg, #c084fc, #818cf8)"
+            >
+              🧙‍♀️
+              <div class="recent-progress-wrap">
+                <div class="recent-progress-bar" style="width: 72%"></div>
+              </div>
+              <span class="recent-ep-badge">32화</span>
+            </div>
+            <div class="recent-name">마법사의 봄</div>
+            <div class="recent-continue">▶ 이어보기</div>
+          </div>
+
+          <div class="recent-item">
+            <div
+              class="recent-cover"
+              style="background: linear-gradient(135deg, #38bdf8, #6366f1)"
+            >
+              🏰
+              <div class="recent-progress-wrap">
+                <div class="recent-progress-bar" style="width: 45%"></div>
+              </div>
+              <span class="recent-ep-badge">18화</span>
+            </div>
+            <div class="recent-name">이세계 기사단</div>
+            <div class="recent-continue">▶ 이어보기</div>
+          </div>
+
+          <div class="recent-item">
+            <div
+              class="recent-cover"
+              style="background: linear-gradient(135deg, #fb923c, #f43f5e)"
+            >
+              💫
+              <div class="recent-progress-wrap">
+                <div class="recent-progress-bar" style="width: 90%"></div>
+              </div>
+              <span class="recent-ep-badge">51화</span>
+            </div>
+            <div class="recent-name">별빛연애</div>
+            <div class="recent-continue">▶ 이어보기</div>
+          </div>
+
+          <div class="recent-item">
+            <div
+              class="recent-cover"
+              style="background: linear-gradient(135deg, #34d399, #059669)"
+            >
+              🌿
+              <div class="recent-progress-wrap">
+                <div class="recent-progress-bar" style="width: 20%"></div>
+              </div>
+              <span class="recent-ep-badge">5화</span>
+            </div>
+            <div class="recent-name">숲속의 왕국</div>
+            <div class="recent-continue">▶ 이어보기</div>
+          </div>
+
+          <div class="recent-item">
+            <div
+              class="recent-cover"
+              style="background: linear-gradient(135deg, #667eea, #764ba2)"
+            >
+              🗡️
+              <div class="recent-progress-wrap">
+                <div class="recent-progress-bar" style="width: 60%"></div>
+              </div>
+              <span class="recent-ep-badge">27화</span>
+            </div>
+            <div class="recent-name">달빛조각사</div>
+            <div class="recent-continue">▶ 이어보기</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 나의 통계 섹션 -->
+      <section class="stats-section">
+        <div class="stats-header">
+          <div class="stats-icon-box">
+            <span class="stats-icon">📊</span>
+          </div>
+          <h3>나의 웹툰 통계</h3>
+          <span class="stats-period">이번 달</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-circle" style="--pct: 78%">
+              <svg viewBox="0 0 36 36">
+                <circle class="bg" cx="18" cy="18" r="15.9" />
+                <circle
+                  class="fill"
+                  cx="18"
+                  cy="18"
+                  r="15.9"
+                  stroke-dasharray="78 22"
+                />
+              </svg>
+              <span class="stat-num">78</span>
+            </div>
+            <p class="stat-label">읽은 화</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-circle" style="--pct: 45%">
+              <svg viewBox="0 0 36 36">
+                <circle class="bg" cx="18" cy="18" r="15.9" />
+                <circle
+                  class="fill romance"
+                  cx="18"
+                  cy="18"
+                  r="15.9"
+                  stroke-dasharray="45 55"
+                />
+              </svg>
+              <span class="stat-num">12</span>
+            </div>
+            <p class="stat-label">구독 작품</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-circle" style="--pct: 60%">
+              <svg viewBox="0 0 36 36">
+                <circle class="bg" cx="18" cy="18" r="15.9" />
+                <circle
+                  class="fill action"
+                  cx="18"
+                  cy="18"
+                  r="15.9"
+                  stroke-dasharray="60 40"
+                />
+              </svg>
+              <span class="stat-num">5</span>
+            </div>
+            <p class="stat-label">완독 작품</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-circle" style="--pct: 90%">
+              <svg viewBox="0 0 36 36">
+                <circle class="bg" cx="18" cy="18" r="15.9" />
+                <circle
+                  class="fill fantasy"
+                  cx="18"
+                  cy="18"
+                  r="15.9"
+                  stroke-dasharray="90 10"
+                />
+              </svg>
+              <span class="stat-num">23</span>
+            </div>
+            <p class="stat-label">연속 출석</p>
+          </div>
+        </div>
+        <div class="genre-bar-wrap">
+          <p class="genre-bar-title">장르별 독서 비율</p>
+          <div class="genre-bar">
+            <div
+              class="bar-seg fantasy-bar"
+              style="width: 40%"
+              data-label="판타지 40%"
+            ></div>
+            <div
+              class="bar-seg romance-bar"
+              style="width: 25%"
+              data-label="로맨스 25%"
+            ></div>
+            <div
+              class="bar-seg action-bar"
+              style="width: 20%"
+              data-label="액션 20%"
+            ></div>
+            <div
+              class="bar-seg drama-bar"
+              style="width: 15%"
+              data-label="드라마 15%"
+            ></div>
+          </div>
+          <div class="bar-legend">
+            <span><i class="dot fantasy-dot"></i>판타지</span>
+            <span><i class="dot romance-dot"></i>로맨스</span>
+            <span><i class="dot action-dot"></i>액션</span>
+            <span><i class="dot drama-dot"></i>드라마</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ai추천 섹션 -->
+      <section class="ai-section">
+        <div class="ai-header">
+          <div class="ai-icon">
+            <img src="assets/icons/ai추천.png" alt="ai추천 아이콘" />
+          </div>
+          <h3>AI 맞춤 추천</h3>
+        </div>
+        <p class="ai-desc">
+          <strong>분홍샌들마법사</strong>님의 취향을 분석했어요!
+        </p>
+        <div class="ai-cards">
+          <div class="ai-card">
+            <div
+              class="ai-card-thumb"
+              style="background: linear-gradient(135deg, #a18cd1, #fbc2eb)"
+            >
+              <span>🗡️</span>
+            </div>
+            <div class="ai-card-info">
+              <p class="ai-card-title">재혼황후</p>
+              <p class="ai-card-genre">판타지 · 로맨스</p>
+              <div class="ai-match">
+                <span class="match-bar" style="width: 92%"></span
+                ><span>92% 매칭</span>
+              </div>
+            </div>
+            <button class="ai-add-btn">+</button>
+          </div>
+          <div class="ai-card">
+            <div
+              class="ai-card-thumb"
+              style="background: linear-gradient(135deg, #43e97b, #38f9d7)"
+            >
+              <span>🐉</span>
+            </div>
+            <div class="ai-card-info">
+              <p class="ai-card-title">나 혼자만 레벨업</p>
+              <p class="ai-card-genre">판타지 · 액션</p>
+              <div class="ai-match">
+                <span class="match-bar" style="width: 87%"></span
+                ><span>87% 매칭</span>
+              </div>
+            </div>
+            <button class="ai-add-btn">+</button>
+          </div>
+          <div class="ai-card">
+            <div
+              class="ai-card-thumb"
+              style="background: linear-gradient(135deg, #f7971e, #ffd200)"
+            >
+              <span>⚔️</span>
+            </div>
+            <div class="ai-card-info">
+              <p class="ai-card-title">템빨</p>
+              <p class="ai-card-genre">판타지 · 게임</p>
+              <div class="ai-match">
+                <span class="match-bar" style="width: 81%"></span
+                ><span>81% 매칭</span>
+              </div>
+            </div>
+            <button class="ai-add-btn">+</button>
+          </div>
+        </div>
+        <button class="ai-more-btn">더 많은 추천 보기</button>
+      </section>
+    </div>
+
+    <!-- 하단메뉴바 -->
+    <div class="bottom-nav">
+      <button class="nav-item active">
+        <img class="nav-icon" src="assets/icons/홈2.png" alt="홈 아이콘" />
+        <span class="nav-label">홈</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/웹툰1.png" alt="책 아이콘" />
+        <span class="nav-label">웹툰</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/관심1.png" alt="관심 아이콘" />
+        <span class="nav-label">관심</span>
+      </button>
+      <button class="nav-item">
+        <img class="nav-icon" src="assets/icons/마이1.png" alt="사람 아이콘" />
+        <span class="nav-label">MY</span>
+      </button>
+      <button class="nav-item">
+        <img
+          class="nav-icon"
+          src="assets/icons/알림1.png"
+          alt="종모양 아이콘"
+        />
+        <span class="nav-label">알림</span>
+      </button>
+    </div>
+  </body>
+</html>
