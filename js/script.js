@@ -15,6 +15,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   const savedId = document.getElementById("saveAccount");
   const loginBtn = document.getElementById("loginBtn");
+  if (!savedId || !loginBtn) return;
 
   // 더보기 버튼(.more-btn) 클릭은 제외하고 나머지 영역 클릭 시 활성화
   savedId.addEventListener("click", (e) => {
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const savedId = document.getElementById("saveAccount");
   const loginBtn = document.getElementById("loginBtn");
+  if (!savedId || !loginBtn) return;
 
   // 자동 선택
   savedId.classList.add("active");

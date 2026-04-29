@@ -6,6 +6,7 @@
     <title>네이버웹툰 - Main-Homepage</title>
 
     <link rel="stylesheet" href="css/main-home.css" />
+    <script src="js/script.js" defer></script>
     <script src="js/main-home.js" defer></script>
   </head>
   <body>
@@ -205,11 +206,56 @@
             <img src="assets/icons/최근웹툰 right.png" alt="오른쪽으로 가기" />
           </button>
         </div>
+
+        <!-- 최근 본 웹툰 업로드 안내 -->
+        <div class="recent-updates">
+          <div class="update-item">
+            <div class="update-thumb">
+              <img src="assets/img/recent-1.png" alt="웹툰 썸네일 1" />
+            </div>
+
+            <div class="update-info">
+              <p class="update-title">미생물</p>
+              <span class="update-sub">기제희</span>
+            </div>
+            <div class="update-day">
+              <span class="update-meta">3일전</span>
+              <span class="update-badge">새 이야기 2+</span>
+            </div>
+          </div>
+          <div class="update-item">
+            <div class="update-thumb">
+              <img src="assets/img/recent-4.png" alt="웹툰 썸네일 4" />
+            </div>
+
+            <div class="update-info">
+              <p class="update-title">열사병</p>
+              <span class="update-sub">상서현</span>
+            </div>
+            <div class="update-day">
+              <span class="update-meta">오늘</span>
+              <span class="update-badge">새 이야기 1+</span>
+            </div>
+          </div>
+          <div class="update-item">
+            <div class="update-thumb">
+              <img src="assets/img/recent-6.png" alt="웹툰 썸네일 6" />
+            </div>
+
+            <div class="update-info">
+              <p class="update-title">방구석 재민이</p>
+              <span class="update-sub">뽈쟁이</span>
+            </div>
+            <div class="update-day">
+              <span class="update-meta">4일전</span>
+              <span class="update-badge">새 이야기 5+</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- 광고배너 -->
       <div class="ad-banner">
-        <span class="ad-label">AD</span>
         <img
           src="assets/img/erik-mclean-tNO5weLNt-E-unsplash.jpg"
           alt="광고이미지"
@@ -314,5 +360,30 @@
         </div>
       </div>
     </div>
+
+    <!-- 푸터 -->
+    <footer class="site-footer">
+      <p class="footer-notice">
+        웹툰에서 제공되는 콘텐츠의 저작원은 저자 또는 제공처에 있으며,
+        <br />이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수
+        있습니다.
+      </p>
+      <div class="footer-biz-box">
+        <p class="footer-biz">네이버웹툰(유) 사업자 정보</p>
+        <img
+          src="assets/icons/carrier-check-down.png"
+          alt="아래더보기 아이콘"
+        />
+      </div>
+      <div class="footer-links">
+        <a href="#">네이버웹툰 이용약관</a>
+        <a href="#">전용상품권 이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">게시물 및 커뮤니티 가이드라인</a>
+        <a href="#">고객센터</a>
+        <a href="#">오류신고</a>
+      </div>
+      <p class="footer-copy">© NAVER WEBTOON Limited.</p>
+    </footer>
   </body>
 </html>

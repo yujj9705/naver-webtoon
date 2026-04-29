@@ -1,15 +1,18 @@
 /* =====================
    랭킹 슬라이드
    ===================== */
-const rankingList = document.querySelector(".ranking-list");
-const rankingCards = document.querySelectorAll(".ranking-list .rec-card");
+const rankingSlide = document.querySelector(".ranking-list-slide");
+const rankCards = document.querySelectorAll(".rank-card");
 const rdots = document.querySelectorAll(".rdot");
 let currentRank = 0;
+let autoSlideTimer = null;
 
 function goToRank(index) {
-  currentRank = Math.max(0, Math.min(index, rankingCards.length - 1));
-  const cardWidth = rankingCards[0].offsetWidth + 10;
-  rankingList.scrollTo({ left: currentRank * cardWidth, behavior: "smooth" });
+  const total = rankCards.length;
+  currentRank = (index + total) % total;
+  const card = rankCards[0];
+  const cardWidth = card.offsetWidth + 10;
+  rankingSlide.scrollTo({ left: currentRank * cardWidth, behavior: "smooth" });
   updateRdots();
 }
 
@@ -17,64 +20,79 @@ function updateRdots() {
   rdots.forEach((d, i) => d.classList.toggle("active", i === currentRank));
 }
 
-if (rankingList) {
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let mouseStartX = 0;
-  let isDown = false;
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlideTimer = setInterval(() => {
+    goToRank(currentRank + 1);
+  }, 4000);
+}
 
-  rankingList.addEventListener(
+function stopAutoSlide() {
+  if (autoSlideTimer) {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = null;
+  }
+}
+
+if (rankingSlide && rankCards.length > 0) {
+  // 터치 스와이프
+  let touchStartX = 0;
+  rankingSlide.addEventListener(
     "touchstart",
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
+      stopAutoSlide();
     },
     { passive: true },
   );
 
-  rankingList.addEventListener(
-    "touchmove",
-    (e) => {
-      const dx = Math.abs(e.changedTouches[0].screenX - touchStartX);
-      const dy = Math.abs(e.changedTouches[0].screenY - touchStartY);
-      if (dx > dy) e.preventDefault();
-    },
-    { passive: false },
-  );
-
-  rankingList.addEventListener("touchend", (e) => {
+  rankingSlide.addEventListener("touchend", (e) => {
     const diff = touchStartX - e.changedTouches[0].screenX;
     if (Math.abs(diff) > 50) {
       goToRank(diff > 0 ? currentRank + 1 : currentRank - 1);
     }
+    startAutoSlide();
   });
 
-  rankingList.addEventListener("mousedown", (e) => {
+  // 마우스 드래그
+  let mouseStartX = 0;
+  let isDown = false;
+  rankingSlide.addEventListener("mousedown", (e) => {
     e.preventDefault();
     isDown = true;
     mouseStartX = e.clientX;
+    stopAutoSlide();
   });
-
-  rankingList.addEventListener("mouseup", (e) => {
+  rankingSlide.addEventListener("mouseup", (e) => {
     if (!isDown) return;
     isDown = false;
     const diff = mouseStartX - e.clientX;
     if (Math.abs(diff) > 50) {
       goToRank(diff > 0 ? currentRank + 1 : currentRank - 1);
     }
+    startAutoSlide();
   });
 
-  rankingList.addEventListener("scroll", () => {
-    const cardWidth = rankingCards[0].offsetWidth + 10;
-    currentRank = Math.round(rankingList.scrollLeft / cardWidth);
+  // 스크롤 위치 동기화
+  rankingSlide.addEventListener("scroll", () => {
+    if (rankCards[0].offsetWidth === 0) return;
+    const cardWidth = rankCards[0].offsetWidth + 10;
+    currentRank = Math.round(rankingSlide.scrollLeft / cardWidth);
     updateRdots();
   });
+
+  // 인디케이터 클릭
+  rdots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      goToRank(i);
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  });
+
+  // 자동슬라이드 시작
+  startAutoSlide();
 }
-
-rdots.forEach((dot, i) => {
-  dot.addEventListener("click", () => goToRank(i));
-});
-
 /* =====================
    요일 탭 전환
    ===================== */
@@ -87,20 +105,6 @@ dayTabs.forEach((tab) => {
     renderWebtoonGrid(tab.dataset.day);
   });
 });
-
-// function renderWebtoonGrid(day) {
-//   const grid = document.getElementById("webtoonGrid");
-//   const count = 18;
-//   grid.innerHTML = Array.from(
-//     { length: count },
-//     (_, i) => `
-//     <div class="webtoon-card">
-//       <div class="webtoon-thumb"></div>
-//       <p class="webtoon-card-title">제목</p>
-//     </div>
-//   `,
-//   ).join("");
-// }
 
 /* =====================
    정렬 탭
@@ -120,8 +124,16 @@ sortTabs.forEach((tab) => {
 const navItems = document.querySelectorAll(".nav-item");
 
 const navIcons = [
-  { inactive: "assets/icons/홈1.png", active: "assets/icons/홈2.png" },
-  { inactive: "assets/icons/웹툰1.png", active: "assets/icons/웹툰2.png" },
+  {
+    inactive: "assets/icons/홈1.png",
+    active: "assets/icons/홈2.png",
+    href: "main-home.html",
+  },
+  {
+    inactive: "assets/icons/웹툰1.png",
+    active: "assets/icons/웹툰2.png",
+    href: "daily.html",
+  },
   { inactive: "assets/icons/관심1.png", active: "assets/icons/관심2.png" },
   { inactive: "assets/icons/마이1.png", active: "assets/icons/마이2.png" },
   { inactive: "assets/icons/알림1.png", active: "assets/icons/알림2.png" },
@@ -135,5 +147,9 @@ navItems.forEach((item, index) => {
     });
     item.classList.add("active");
     item.querySelector(".nav-icon").src = navIcons[index].active;
+
+    if (navIcons[index].href) {
+      window.location.href = navIcons[index].href;
+    }
   });
 });
