@@ -206,7 +206,11 @@
       href: "daily.html",
     },
     { inactive: "assets/icons/관심1.png", active: "assets/icons/관심2.png" },
-    { inactive: "assets/icons/마이1.png", active: "assets/icons/마이2.png" },
+    {
+      inactive: "assets/icons/마이1.png",
+      active: "assets/icons/마이2.png",
+      href: "my-page.html",
+    },
     { inactive: "assets/icons/알림1.png", active: "assets/icons/알림2.png" },
   ];
 
