@@ -381,8 +381,43 @@ function goHome() {
   window.location.href = "main-home.html"; // main-home.html 로 이동
 }
 
+// onFocusConfirm() 수정
+function onFocusConfirm() {
+  const hasSelected = document.querySelector(".focus-card.selected");
+  if (!selectedFocus && !hasSelected) return;
+
+  // 선택된 집중도 텍스트 저장
+  const focusEl = document.querySelector(".focus-card.selected .focus-pct");
+  if (focusEl) {
+    localStorage.setItem("selectedFocus", focusEl.textContent);
+  }
+
+  showScreen("screenComplete");
+}
+
+// onGenreConfirm() 수정
+function onGenreConfirm() {
+  if (selectedGenres.size === 0) return;
+
+  // 선택된 장르 저장
+  localStorage.setItem("selectedGenres", JSON.stringify([...selectedGenres]));
+
+  showScreen("screenFocus");
+}
+
 // ─── Entry point (index.html에서 로그인 / 게스트 후 호출) ─────────────────────
 
 window.startOnboarding = function () {
   showScreen("screenGenre");
 };
+
+function skipGenre() {
+  // 장르 건너뜀 → 빈 배열 저장 (또는 기본값)
+  localStorage.setItem("selectedGenres", JSON.stringify([]));
+  document.getElementById("skip-modal").classList.add("show");
+}
+
+function skipFocus() {
+  localStorage.setItem("selectedFocus", "");
+  showScreen("screenComplete");
+}

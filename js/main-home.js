@@ -170,6 +170,43 @@
     });
   });
 
+  window.addEventListener("DOMContentLoaded", () => {
+    // ─── 온보딩 값 불러오기 ───────────────────────────────
+    const savedGenres = localStorage.getItem("selectedGenres");
+    const savedFocus = localStorage.getItem("selectedFocus");
+
+    // 장르 태그 업데이트
+    const genreContainer = document.getElementById("selectedGenres");
+    if (genreContainer && savedGenres) {
+      const genres = JSON.parse(savedGenres);
+      if (genres.length > 0) {
+        genreContainer.innerHTML = genres
+          .map((g) => `<span># ${g}</span>`)
+          .join("");
+      }
+      // genres.length === 0 이면 기존 HTML 기본값 유지
+    }
+
+    // 집중도 태그 업데이트
+    const focusContainer = document.getElementById("selectedFocus");
+    if (focusContainer && savedFocus) {
+      focusContainer.innerHTML = `<span># ${savedFocus}</span>`;
+    }
+
+    // 기존 모달 초기 선택 상태 반영 (기존 코드 유지)
+    document.querySelectorAll("#genreOptions button").forEach((btn) => {
+      if (savedGenres && JSON.parse(savedGenres).includes(btn.textContent)) {
+        btn.classList.add("selected");
+      }
+    });
+
+    document.querySelectorAll("#focusOptions button").forEach((btn) => {
+      if (btn.textContent === savedFocus) {
+        btn.classList.add("selected");
+      }
+    });
+  });
+
   /* =====================
    최근 본 웹툰 슬라이드 화살표
    ===================== */
