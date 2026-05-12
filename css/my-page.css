@@ -553,8 +553,9 @@ button.calendar:hover {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 50px);
-  gap: 3px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+  width: 100%;
   justify-content: center;
 }
 .cal-day-header {
@@ -579,7 +580,8 @@ button.calendar:hover {
 }
 
 .cal-cell {
-  width: 40px;
+  width: 100%;
+  aspect-ratio: 1/1;
   height: 40px;
   object-fit: contain;
   display: flex;
@@ -589,6 +591,13 @@ button.calendar:hover {
   position: relative;
   cursor: default;
 }
+
+.cal-cell img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
 .cal-cell.has-genre {
   background: var(--card2);
 }
@@ -600,7 +609,7 @@ button.calendar:hover {
   position: absolute;
   bottom: 2px;
   right: 3px;
-  font-size: 10px;
+  clamp: (8px, 2vw, 10px);
   line-height: 1;
 }
 
