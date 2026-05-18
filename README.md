@@ -278,7 +278,7 @@ naver-webtoon
 
 | 페이지 | 역할 |
 |---|---|
-| `index.html` | Splash & Login |
+| `index.html` | Splash |
 | `signup.html` | 회원가입 페이지 |
 | `login.html` | 로그인 페이지 |
 | `login-naver.html` | 네이버 간편 로그인 |
