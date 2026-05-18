@@ -90,6 +90,7 @@ flowchart TD
 
     F --> G[daily.html<br/>요일별 웹툰]
     F --> H[웹툰 상세]
+    G --> H
 
     H --> I[관심 저장]
 
