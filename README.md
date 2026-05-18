@@ -77,7 +77,7 @@ style I fill:#00D564,color:#fff
 ```mermaid
 flowchart TD
 
-    A[index.html<br/>Splash & Login]
+    A[index.html<br/>Splash]
 
     A --> B[signup.html<br/>회원가입]
     A --> C[login.html<br/>로그인]
